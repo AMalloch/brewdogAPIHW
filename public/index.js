@@ -12,8 +12,8 @@ const requestComplete = function(){
   if(this.status !== 200) return;
   const jsonString = this.responseText;
   const beers = JSON.parse(jsonString);
-  debugger;
   populateList(beers);
+  getBeer(beers);
 }
 
 const populateList = function(beers){
@@ -24,6 +24,14 @@ const populateList = function(beers){
     li.innerText = beer.name;
     select.appendChild(li);
   };
+};
+
+const getBeer = function(beers){
+  const selected_beer = document.querySelector('select');
+      debugger;
+  selected_beer.addEventListener('change', function(){
+    let beer = beers[this.value]
+  })
 };
 
 var app = function(){
