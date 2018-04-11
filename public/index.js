@@ -12,12 +12,11 @@ const requestComplete = function(){
   if(this.status !== 200) return;
   const jsonString = this.responseText;
   const beers = JSON.parse(jsonString);
-  populateList(beers);
+  populateSelect(beers);
   getBeer(beers);
 }
 
 const populateList = function(beers){
-
   const select = document.getElementById("beers-list")
   for (let beer of beers){
     const li = document.createElement("li");
@@ -26,12 +25,21 @@ const populateList = function(beers){
   };
 };
 
+const populateSelect = function(beers){
+  const select = document.getElementById("beers-list");
+  beers.forEach(function(beer, index){
+    const option = document.createElement("option");
+    option.innerText = beer.name;
+    option.value = index;
+    select.appendChild(option);
+  });
+};
+
 const getBeer = function(beers){
   const selected_beer = document.querySelector('select');
   selected_beer.addEventListener('change', function(){
     let beer = beers[this.value]
     getDetails(beer);
-    debugger;
   })
 };
 
