@@ -46,8 +46,14 @@ const getBeer = function(beers){
 const getDetails = function(beer){
   const div = document.getElementById("beer-info");
   const name = document.createElement("p");
+  const img = document.createElement("IMG")
   name.innerText = "Name: " + beer.name;
+  img.setAttribute("src", beer.image_url);
+  img.setAttribute("width", "100");
+  img.setAttribute("height", "300");
+  img.setAttribute("alt", "Who wants a beer!");
   div.appendChild(name);
+  div.appendChild(img);
   return div;
 }
 
