@@ -47,14 +47,27 @@ const getDetails = function(beer){
   const div = document.getElementById("beer-info");
   const name = document.createElement("p");
   const img = document.createElement("IMG")
+  const ingredients = document.createElement('p')
+  getIngredients(beer)
   name.innerText = "Name: " + beer.name;
+  ingredients.innerText = "Ingredients: " + ingredientsArray;
   img.setAttribute("src", beer.image_url);
   img.setAttribute("width", "100");
   img.setAttribute("height", "300");
   img.setAttribute("alt", "Who wants a beer!");
   div.appendChild(name);
+  div.appendChild(ingredients);
   div.appendChild(img);
   return div;
+}
+
+const getIngredients = function(beer){
+  ingredients = beer.ingredients
+  ingredientsArray = []
+  for (item in ingredients){
+    ingredientsArray.push(item);
+  }
+  return ingredientsArray;
 }
 
 var app = function(){
