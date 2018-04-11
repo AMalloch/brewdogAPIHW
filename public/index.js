@@ -28,11 +28,20 @@ const populateList = function(beers){
 
 const getBeer = function(beers){
   const selected_beer = document.querySelector('select');
-      debugger;
   selected_beer.addEventListener('change', function(){
     let beer = beers[this.value]
+    getDetails(beer);
+    debugger;
   })
 };
+
+const getDetails = function(beer){
+  const div = document.getElementById("beer-info");
+  const name = document.createElement("p");
+  name.innerText = "Name: " + beer.name;
+  div.appendChild(name);
+  return div;
+}
 
 var app = function(){
 
